@@ -7,8 +7,6 @@ using namespace std;
 
 typedef vector<string> recipe_data_t;
 
-static const int MAX_LINE_LENGTH = 1000;
-
 int StrToInt(const string s) {
   stringstream ss;
   ss << s;
@@ -19,9 +17,9 @@ int StrToInt(const string s) {
 
 void LoadRecipe(const string filename, recipe_data_t& recipeData) {
   ifstream file(filename.c_str());
-  char     text[MAX_LINE_LENGTH];
+  string   text;
 
-  while( ! file.getline(text, MAX_LINE_LENGTH).fail() ) {
+  while(getline(file, text).good()) {
     ostringstream oss;
     oss << text;
     recipeData.push_back(oss.str());
