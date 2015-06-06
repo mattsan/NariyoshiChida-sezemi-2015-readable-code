@@ -8,11 +8,13 @@ void LoadRecipe(string filename){
   string text;
 
   // ファイルの中身を1行ずつ読み込み出力する
-  while( !( file >> text ).fail() ) {
-    cout << text << endl;
+  int identifier_of_recipe = 1;
+  while( !( file >> text ).fail() ) { 
+    cout << identifier_of_recipe << ": " << text << endl;
+    ++identifier_of_recipe;
   }
 
-  read_file.close();
+  file.close();
 
 }
 
