@@ -42,3 +42,19 @@ $ ./a.out recipe-data_spec6.txt
 
 実行方法 2 : 指定した ID のレシピのみを出力。ID はコマンドのパラメータとして指定する
 $ ./a.out recipe-data_spec6.txt 1
+
+仕様7 :
+recipe-data_spec7.txt にレシピ情報のデータが書き込まれている
+
+データは１行に１つのレシピ情報をテキストで記述し、複数のデータを記述することができる
+
+レシピ情報は、料理名とクックパッドのURLを空白で区切り１行に記述する
+
+コンパイル
+$ g++ recipe.cc
+
+実行方法 1 : 全レシピを出力
+$ ./a.out recipe-data_spec7.txt
+
+実行方法 2 : 指定した ID のレシピのみを出力。ID はコマンドのパラメータとして指定する
+$ ./a.out recipe-data_spec7.txt 1
