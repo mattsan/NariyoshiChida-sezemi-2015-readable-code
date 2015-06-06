@@ -17,20 +17,31 @@ int StrToInt(const string s) {
 
 typedef vector<Recipe> Recipes;
 
-void LoadRecipe(const string filename, Recipes& recipes) {
-  ifstream file(filename.c_str());
-  Recipe   recipe;
+istream& operator >> (istream& in, Recipes& recipes) {
+  Recipe recipe;
 
-  while(recipe.readFrom(file).good()) {
+  while(recipe.readFrom(in).good()) {
     recipes.push_back(recipe);
   }
+
+  return in;
+}
+
+ostream& operator << (ostream& out, const Recipes& recipes) {
+  for(int i = 0; i < recipes.size(); ++i) {
+    out << (i + 1) << ": " << recipes[i] << "\n";
+  }
+  return out;
+}
+
+void LoadRecipe(const string& filename, Recipes& recipes) {
+  ifstream file(filename.c_str());
+  file >> recipes;
 }
 
 void PrintRecipe(const Recipes& recipes, const string& id_str) {
   if(id_str.empty()) {
-    for(int i = 0; i < recipes.size(); ++i) {
-      cout << (i + 1) << ": " << recipes[i] << endl;
-    }
+    cout << recipes;
   } else {
     int id_number = StrToInt(id_str);
     cout << id_number << ": " << recipes[id_number - 1] << endl;
