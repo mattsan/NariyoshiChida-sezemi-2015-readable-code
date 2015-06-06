@@ -20,4 +20,12 @@ recipe-data_spec4.txt にレシピ情報のデータが書き込まれている
 
 実行方法
 $ g++ recipe.cc
-$ ./a.out recipe-data.txt
+$ ./a.out recipe-data_spec4.txt
+
+
+仕様4 :
+recipe-data_spec5.txt にレシピ情報のデータが書き込まれている
+
+実行方法
+$ g++ recipe.cc
+$ ./a.out recipe-data_spec5.txt
