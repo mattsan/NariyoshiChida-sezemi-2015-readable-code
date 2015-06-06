@@ -14,7 +14,7 @@ std::istream& Recipe::readFrom(std::istream& in) {
 }
 
 std::ostream& Recipe::writeTo(std::ostream& out) const {
-  return out << name_ << ' ' << url_;
+  return out << id_ << ": " << name_ << ' ' << url_;
 }
 
 std::istream& operator >> (std::istream& in, Recipe& recipe) {
@@ -23,4 +23,24 @@ std::istream& operator >> (std::istream& in, Recipe& recipe) {
 
 std::ostream& operator << (std::ostream& out, const Recipe& recipe) {
   return recipe.writeTo(out);
+}
+
+std::istream& operator >> (std::istream& in, Recipes& recipes) {
+  Recipe recipe;
+
+  int id = 1;
+  while(recipe.readFrom(in).good()) {
+    recipe.setId(id);
+    recipes.push_back(recipe);
+    ++id;
+  }
+
+  return in;
+}
+
+std::ostream& operator << (std::ostream& out, const Recipes& recipes) {
+  for(int i = 0; i < recipes.size(); ++i) {
+    out << recipes[i] << "\n";
+  }
+  return out;
 }

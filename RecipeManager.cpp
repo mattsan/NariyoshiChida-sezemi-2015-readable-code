@@ -1,7 +1,6 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <vector>
 
 #include "Recipe.h"
 
@@ -15,25 +14,6 @@ int StrToInt(const string s) {
   return result;
 }
 
-typedef vector<Recipe> Recipes;
-
-istream& operator >> (istream& in, Recipes& recipes) {
-  Recipe recipe;
-
-  while(recipe.readFrom(in).good()) {
-    recipes.push_back(recipe);
-  }
-
-  return in;
-}
-
-ostream& operator << (ostream& out, const Recipes& recipes) {
-  for(int i = 0; i < recipes.size(); ++i) {
-    out << (i + 1) << ": " << recipes[i] << "\n";
-  }
-  return out;
-}
-
 void LoadRecipe(const string& filename, Recipes& recipes) {
   ifstream file(filename.c_str());
   file >> recipes;
@@ -43,8 +23,7 @@ void PrintRecipe(const Recipes& recipes, const string& id_str) {
   if(id_str.empty()) {
     cout << recipes;
   } else {
-    int id_number = StrToInt(id_str);
-    cout << id_number << ": " << recipes[id_number - 1] << endl;
+    cout << recipes[StrToInt(id_str) - 1] << endl;
   }
 }
 
