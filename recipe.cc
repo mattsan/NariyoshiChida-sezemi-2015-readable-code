@@ -19,7 +19,6 @@ void LoadRecipe(const string filename, recipe_data_t& recipeData) {
   fstream file(filename.c_str());
   string  text;
 
-  // ファイルの中身を1行ずつ読み込み出力する
   while( !( file >> text ).fail() ) {
     ostringstream oss;
     oss << text;
@@ -27,24 +26,25 @@ void LoadRecipe(const string filename, recipe_data_t& recipeData) {
   }
 }
 
-void PrintRecipe(const recipe_data_t& recipeData, const string& id) {
-  if(id.empty()) {
+void PrintRecipe(const recipe_data_t& recipeData, const string& id_str) {
+  if(id_str.empty()) {
     for(int i = 0; i < recipeData.size(); ++i) {
       cout << (i + 1) << ": " << recipeData[i] << endl;
     }
   } else {
-    int id_number = StrToInt(id);
+    int id_number = StrToInt(id_str);
     cout << id_number << ": " << recipeData[id_number - 1] << endl;
   }
 }
 
 int main(int argc,char* argv[]){
-  std::string filename = argv[1];
-  std::string id       = (argc > 2) ? argv[2] : "";
+  const std::string filename = argv[1];
+  const std::string id_str   = (argc > 2) ? argv[2] : "";
+
   recipe_data_t recipeData;
 
   LoadRecipe(filename, recipeData);
-  PrintRecipe(recipeData, id);
+  PrintRecipe(recipeData, id_str);
 
   return 0;
 }
