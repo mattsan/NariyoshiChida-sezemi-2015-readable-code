@@ -1,31 +1,44 @@
 #include <fstream>
 #include <iostream>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
-void LoadRecipe(string filename){
+typedef vector<string> recipe_data_t;
 
+int StrToInt(const string s) {
+  stringstream ss;
+  ss << s;
+  int result;
+  ss >> result;
+  return result;
+}
+
+void LoadRecipe(const string filename, recipe_data_t& recipeData) {
   fstream file(filename.c_str());
-  string text;
+  string  text;
 
   // ファイルの中身を1行ずつ読み込み出力する
-  int identifier_of_recipe = 1;
-  while( !( file >> text ).fail() ) { 
-    cout << identifier_of_recipe << ": " << text << endl;
-    ++identifier_of_recipe;
+  while( !( file >> text ).fail() ) {
+    ostringstream oss;
+    oss << text;
+    recipeData.push_back(oss.str());
   }
+}
 
-  file.close();
-
+void PrintRecipe(const recipe_data_t& recipeData) {
+  for(int i = 0; i < recipeData.size(); ++i) {
+    cout << (i + 1) << ": " << recipeData[i] << endl;
+  }
 }
 
 int main(int argc,char* argv[]){
+  std::string filename = argv[1];
+  recipe_data_t recipeData;
 
-
-  // ./a.out の後に続くデータファイルの中身を順にロードする
-  for(int i=1;i<argc;i++){
-    LoadRecipe(string(argv[i]));
-  }
+  LoadRecipe(filename, recipeData);
+  PrintRecipe(recipeData);
 
   return 0;
 }
