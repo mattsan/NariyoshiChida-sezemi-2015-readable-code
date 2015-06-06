@@ -2,12 +2,13 @@
 
 using namespace std;
 
-void Output(string filename){
+void LoadRecipe(string filename){
 
-  fstream read_file(filename.c_str());
+  fstream file(filename.c_str());
   string text;
 
-  while( !( read_file >> text ).fail() ) {
+  // ファイルの中身を1行ずつ読み込み出力する
+  while( !( file >> text ).fail() ) {
     cout << text << endl;
   }
 
@@ -17,8 +18,10 @@ void Output(string filename){
 
 int main(int argc,char* argv[]){
 
+
+  // ./a.out の後に続くデータファイルの中身を順にロードする
   for(int i=1;i<argc;i++){
-    Output(string(argv[i]));
+    LoadRecipe(string(argv[i]));
   }
 
   return 0;
