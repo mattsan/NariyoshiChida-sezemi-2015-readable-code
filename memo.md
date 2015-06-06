@@ -42,6 +42,8 @@ while( !( file >> text ).fail() ) {
 
 ### 実際のコード
 
+https://github.com/NariyoshiChida/NariyoshiChida-sezemi-2015-readable-code/blob/master/recipe.cc#L12
+
 ```c
   while( !( file >> text ).fail() ) { 
 ```
@@ -60,6 +62,8 @@ while( !( file >> text ).fail() ) {
 
 ### 実際のコード
 
+https://github.com/NariyoshiChida/NariyoshiChida-sezemi-2015-readable-code/blob/master/recipe.cc#L7
+
 ```c
   fstream file(filename.c_str());
 ```
@@ -75,6 +79,8 @@ C++ 本来のライブラリを
 
 ### 実際のコード
 
+https://github.com/NariyoshiChida/NariyoshiChida-sezemi-2015-readable-code/blob/master/recipe.cc#L13
+
 ```c
     cout << identifier_of_recipe << ": " << text << endl;
 ```
@@ -86,6 +92,8 @@ C++ 本来のライブラリを
 ## インクリメント
 
 ### 実際のコード
+
+https://github.com/NariyoshiChida/NariyoshiChida-sezemi-2015-readable-code/blob/master/recipe.cc#L14
 
 ```c
     ++identifier_of_recipe;
