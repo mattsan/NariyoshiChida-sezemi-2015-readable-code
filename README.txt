@@ -29,3 +29,15 @@ recipe-data_spec5.txt にレシピ情報のデータが書き込まれている
 実行方法
 $ g++ recipe.cc
 $ ./a.out recipe-data_spec5.txt
+
+仕様6 :
+recipe-data_spec6.txt にレシピ情報のデータが書き込まれている
+
+コンパイル
+$ g++ recipe.cc
+
+実行方法 1 : 全レシピを出力
+$ ./a.out recipe-data_spec6.txt
+
+実行方法 2 : 指定した ID のレシピのみを出力
+$ ./a.out recipe-data_spec6.txt 1
