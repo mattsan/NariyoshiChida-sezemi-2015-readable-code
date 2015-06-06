@@ -28,7 +28,17 @@ private:
 std::istream& operator >> (std::istream& in, Recipe& recipe);
 std::ostream& operator << (std::ostream& out, const Recipe& recipe);
 
-typedef std::vector<Recipe> Recipes;
+class Recipes {
+public:
+  Recipes() : recipes_() {}
+
+  void          push_back(const Recipe& recipe) { recipes_.push_back(recipe); }
+  std::size_t   size() const                    { return recipes_.size();     }
+  const Recipe& operator [] (int i) const       { return recipes_[i];         }
+
+private:
+  std::vector<Recipe> recipes_;
+};
 
 std::istream& operator >> (std::istream& in, Recipes& recipes);
 std::ostream& operator << (std::ostream& out, const Recipes& recipes);
