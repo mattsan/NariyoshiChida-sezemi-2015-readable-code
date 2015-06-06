@@ -87,9 +87,11 @@ https://github.com/NariyoshiChida/NariyoshiChida-sezemi-2015-readable-code/blob/
 
 ### どうしてリーダブルだと思っているかの説明
 
+（C のライブラリでなく）C++ の標準ライブラリを使うことで、C++ としての統一がとれています。
+
 ### この書き方の一言説明
 
-## インクリメント
+## 前置インクリメント
 
 ### 実際のコード
 
@@ -100,6 +102,8 @@ https://github.com/NariyoshiChida/NariyoshiChida-sezemi-2015-readable-code/blob/
 ```
 
 ### どうしてリーダブルだと思っているかの説明
+
+前置にすることでインクリメントのみの利用であることが強調されています。
 
 ### この書き方の一言説明
 
