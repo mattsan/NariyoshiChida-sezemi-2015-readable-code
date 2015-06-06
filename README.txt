@@ -23,7 +23,7 @@ $ g++ recipe.cc
 $ ./a.out recipe-data_spec4.txt
 
 
-仕様4 :
+仕様5 :
 recipe-data_spec5.txt にレシピ情報のデータが書き込まれている
 
 実行方法
