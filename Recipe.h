@@ -35,6 +35,7 @@ public:
   void          push_back(const Recipe& recipe) { recipes_.push_back(recipe); }
   std::size_t   size() const                    { return recipes_.size();     }
   const Recipe& operator [] (int i) const       { return recipes_[i];         }
+  const Recipe& findById(int id) const;
 
 private:
   std::vector<Recipe> recipes_;

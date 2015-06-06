@@ -25,6 +25,10 @@ std::ostream& operator << (std::ostream& out, const Recipe& recipe) {
   return recipe.writeTo(out);
 }
 
+const Recipe& Recipes::findById(int id) const {
+  return recipes_[id - 1];
+}
+
 std::istream& operator >> (std::istream& in, Recipes& recipes) {
   Recipe recipe;
 

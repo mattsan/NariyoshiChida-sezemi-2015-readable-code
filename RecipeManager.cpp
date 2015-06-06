@@ -23,7 +23,7 @@ void PrintRecipe(const Recipes& recipes, const string& id_str) {
   if(id_str.empty()) {
     cout << recipes;
   } else {
-    cout << recipes[StrToInt(id_str) - 1] << endl;
+    cout << recipes.findById(StrToInt(id_str)) << endl;
   }
 }
 
