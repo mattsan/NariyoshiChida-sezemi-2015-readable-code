@@ -18,10 +18,11 @@ $ ./a.out recipe-data.txt
 仕様4 :
 recipe-data_spec4.txt にレシピ情報のデータが書き込まれている
 
+データは１行に１つのレシピ情報をテキストで記述し、複数のデータを記述することができる
+
 実行方法
 $ g++ recipe.cc
 $ ./a.out recipe-data_spec4.txt
-
 
 仕様5 :
 recipe-data_spec5.txt にレシピ情報のデータが書き込まれている
