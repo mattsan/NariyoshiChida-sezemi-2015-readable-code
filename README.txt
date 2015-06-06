@@ -40,5 +40,5 @@ $ g++ recipe.cc
 実行方法 1 : 全レシピを出力
 $ ./a.out recipe-data_spec6.txt
 
-実行方法 2 : 指定した ID のレシピのみを出力
+実行方法 2 : 指定した ID のレシピのみを出力。ID はコマンドのパラメータとして指定する
 $ ./a.out recipe-data_spec6.txt 1
