@@ -1,2 +1,2 @@
-RecipeManager: RecipeManager.cpp Recipe.cpp Recipe.h User.cpp User.h
-	g++ -o RecipeManager RecipeManager.cpp Recipe.cpp User.cpp
+RecipeManager: src/RecipeManager.cpp src/Recipe.cpp src/Recipe.h src/User.cpp src/User.h
+	g++ -o RecipeManager src/RecipeManager.cpp src/Recipe.cpp src/User.cpp
