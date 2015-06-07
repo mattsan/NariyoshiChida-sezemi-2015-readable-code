@@ -35,6 +35,12 @@ struct FindById {
   const int id;
 };
 
+void RecipeBook::append(const Recipe& recipe) {
+  recipeBook_.push_back(recipe);
+  recipeBook_.back().setId(current_id_++);
+}
+
+
 const Recipe& RecipeBook::findById(int id) const {
   std::vector<Recipe>::const_iterator i = std::find_if(recipeBook_.begin(), recipeBook_.end(), FindById(id));
   return *i;

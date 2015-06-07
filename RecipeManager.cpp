@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Recipe.h"
+#include "User.h"
 
 using namespace std;
 
@@ -14,19 +15,6 @@ int StrToInt(const string s) {
   ss >> result;
   return result;
 }
-
-struct User {
-  User(const string& name, int initial_id) : name(name), recipeBook(initial_id) {}
-
-  string     name;
-  RecipeBook recipeBook;
-};
-
-ostream& operator << (ostream& out, const User& user) {
-  return out << user.name << "\n" << user.recipeBook;
-}
-
-typedef vector<User> Users;
 
 void LoadRecipe(const string& filename, RecipeBook& recipeBook) {
   ifstream file(filename.c_str());

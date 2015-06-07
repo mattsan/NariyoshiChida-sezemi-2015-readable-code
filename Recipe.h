@@ -16,8 +16,8 @@ public:
   void setId(int id)                    { id_   = id;   }
 
   const std::string name() const { return name_; }
-  const std::string url() const  { return url_; }
-  int               id() const   { return id_; }
+  const std::string url() const  { return url_;  }
+  int               id() const   { return id_;   }
 
 private:
   std::string name_;
@@ -33,15 +33,11 @@ public:
   RecipeBook() : recipeBook_(), current_id_(1) {}
   RecipeBook(int initial_id) : recipeBook_(), current_id_(initial_id) {}
 
-  void append(const Recipe& recipe) {
-    recipeBook_.push_back(recipe);
-    recipeBook_.back().setId(current_id_++);
-  }
+  std::size_t   size() const              { return recipeBook_.size(); }
+  const Recipe& operator [] (int i) const { return recipeBook_[i];     }
+  int           current_id() const        { return current_id_;        }
 
-  std::size_t   size() const                    { return recipeBook_.size();     }
-  const Recipe& operator [] (int i) const       { return recipeBook_[i];         }
-  int current_id() const { return current_id_; }
-
+  void append(const Recipe& recipe);
   const Recipe& findById(int id) const;
   bool hasId(int id) const;
 
