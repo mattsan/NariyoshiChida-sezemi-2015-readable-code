@@ -35,29 +35,29 @@ struct FindById {
   const int id;
 };
 
-const Recipe& Recipes::findById(int id) const {
-  std::vector<Recipe>::const_iterator i = std::find_if(recipes_.begin(), recipes_.end(), FindById(id));
+const Recipe& RecipeBook::findById(int id) const {
+  std::vector<Recipe>::const_iterator i = std::find_if(recipeBook_.begin(), recipeBook_.end(), FindById(id));
   return *i;
 }
 
-bool Recipes::hasId(int id) const {
-  std::vector<Recipe>::const_iterator i = std::find_if(recipes_.begin(), recipes_.end(), FindById(id));
-  return i != recipes_.end();
+bool RecipeBook::hasId(int id) const {
+  std::vector<Recipe>::const_iterator i = std::find_if(recipeBook_.begin(), recipeBook_.end(), FindById(id));
+  return i != recipeBook_.end();
 }
 
-std::istream& operator >> (std::istream& in, Recipes& recipes) {
+std::istream& operator >> (std::istream& in, RecipeBook& recipeBook) {
   Recipe recipe;
 
   while(recipe.readFrom(in).good()) {
-    recipes.append(recipe);
+    recipeBook.append(recipe);
   }
 
   return in;
 }
 
-std::ostream& operator << (std::ostream& out, const Recipes& recipes) {
-  for(int i = 0; i < recipes.size(); ++i) {
-    out << recipes[i] << "\n";
+std::ostream& operator << (std::ostream& out, const RecipeBook& recipeBook) {
+  for(int i = 0; i < recipeBook.size(); ++i) {
+    out << recipeBook[i] << "\n";
   }
   return out;
 }

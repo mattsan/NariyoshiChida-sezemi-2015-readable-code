@@ -16,30 +16,30 @@ int StrToInt(const string s) {
 }
 
 struct User {
-  User(const string& name, int initial_id) : name(name), recipes(initial_id) {}
+  User(const string& name, int initial_id) : name(name), recipeBook(initial_id) {}
 
-  string  name;
-  Recipes recipes;
+  string     name;
+  RecipeBook recipeBook;
 };
 
 ostream& operator << (ostream& out, const User& user) {
-  return out << user.name << "\n" << user.recipes;
+  return out << user.name << "\n" << user.recipeBook;
 }
 
 typedef vector<User> Users;
 
-void LoadRecipe(const string& filename, Recipes& recipes) {
+void LoadRecipe(const string& filename, RecipeBook& recipeBook) {
   ifstream file(filename.c_str());
-  file >> recipes;
+  file >> recipeBook;
 }
 
 void PrintUsers(const Users& users, const string& id_str) {
   for(Users::const_iterator i = users.begin(); i != users.end(); ++i) {
     cout << "ユーザー名: " << i->name << "\n";
     if(id_str.empty()) {
-      cout << i->recipes;
-    } else if(i->recipes.hasId(StrToInt(id_str))) {
-      cout << i->recipes.findById(StrToInt(id_str)) << endl;
+      cout << i->recipeBook;
+    } else if(i->recipeBook.hasId(StrToInt(id_str))) {
+      cout << i->recipeBook.findById(StrToInt(id_str)) << endl;
     }
     cout << endl;
   }
@@ -61,9 +61,9 @@ int main(int argc,char* argv[]){
 
     const std::string filename = argv[i++];
 
-    LoadRecipe(filename, user.recipes);
+    LoadRecipe(filename, user.recipeBook);
 
-    initial_id = user.recipes.current_id();
+    initial_id = user.recipeBook.current_id();
 
     users.push_back(user);
   }
