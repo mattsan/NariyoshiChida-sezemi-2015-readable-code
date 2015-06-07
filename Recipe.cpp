@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 
 #include "Recipe.h"
@@ -25,18 +26,30 @@ std::ostream& operator << (std::ostream& out, const Recipe& recipe) {
   return recipe.writeTo(out);
 }
 
+struct FindById {
+  FindById(int id) : id(id) {}
+  bool operator () (const Recipe& recipe) const {
+    return recipe.id() == id;
+  };
+
+  const int id;
+};
+
 const Recipe& Recipes::findById(int id) const {
-  return recipes_[id - 1];
+  std::vector<Recipe>::const_iterator i = std::find_if(recipes_.begin(), recipes_.end(), FindById(id));
+  return *i;
+}
+
+bool Recipes::hasId(int id) const {
+  std::vector<Recipe>::const_iterator i = std::find_if(recipes_.begin(), recipes_.end(), FindById(id));
+  return i != recipes_.end();
 }
 
 std::istream& operator >> (std::istream& in, Recipes& recipes) {
   Recipe recipe;
 
-  int id = 1;
   while(recipe.readFrom(in).good()) {
-    recipe.setId(id);
-    recipes.push_back(recipe);
-    ++id;
+    recipes.append(recipe);
   }
 
   return in;

@@ -30,15 +30,24 @@ std::ostream& operator << (std::ostream& out, const Recipe& recipe);
 
 class Recipes {
 public:
-  Recipes() : recipes_() {}
+  Recipes() : recipes_(), current_id_(1) {}
+  Recipes(int initial_id) : recipes_(), current_id_(initial_id) {}
 
-  void          push_back(const Recipe& recipe) { recipes_.push_back(recipe); }
+  void append(const Recipe& recipe) {
+    recipes_.push_back(recipe);
+    recipes_.back().setId(current_id_++);
+  }
+
   std::size_t   size() const                    { return recipes_.size();     }
   const Recipe& operator [] (int i) const       { return recipes_[i];         }
+  int current_id() const { return current_id_; }
+
   const Recipe& findById(int id) const;
+  bool hasId(int id) const;
 
 private:
   std::vector<Recipe> recipes_;
+  int                 current_id_;
 };
 
 std::istream& operator >> (std::istream& in, Recipes& recipes);
